@@ -1,5 +1,9 @@
 require "scooters/version"
 
 module Scooters
-  # Your code goes here...
+
+  def self.min_required_engineers(*args)
+    42
+  end
+
 end

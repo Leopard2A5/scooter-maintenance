@@ -1,3 +1,50 @@
 #!/usr/bin/env ruby
 
 require "scooters"
+require "slop"
+
+opts = Slop.parse do |o|
+  o.integer '-m', '--cap-manager', 'Capacity of the fleet manager'
+  o.integer '-e', '--cap-engineers', 'Capacity of the engineers'
+  o.array '-s', '--scooters', 'Array of integers giving the number of scooters in each region.'
+  o.bool '-h', '--help', 'Print usage instructions.'
+  o.on '-v', '--version', 'Prints the version' do
+    puts Scooters::VERSION
+    exit
+  end
+end
+
+if opts[:help]
+  puts opts
+  exit
+end
+
+cap_manager = opts[:cap_manager]
+cap_engineers = opts[:cap_engineers]
+scooters = opts[:scooters].map(&:to_i)
+
+unless cap_manager and cap_engineers and scooters
+  STDERR.puts "Manager capacity, engineer capacity and the array of scooters are mandatory options."
+  exit 1
+end
+
+unless cap_manager >= 0
+  STDERR.puts "The manager's capacity must be at least 0."
+  exit 1
+end
+
+unless cap_engineers >= 0
+  STDERR.puts "The engineers' capacity must be at least 0."
+  exit 1
+end
+
+unless scooters.all? {|x| x > 0 }
+  STDERR.puts "Scooters must be an array of integers, each greater than 0."
+  exit 1
+end
+
+puts Scooters.min_required_engineers({
+  cap_manager: cap_manager,
+  cap_engineers: cap_engineers,
+  scooters: scooters
+})
