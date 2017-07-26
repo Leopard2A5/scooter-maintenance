@@ -1,3 +1,5 @@
+![](https://travis-ci.org/Leopard2A5/scooter-maintenance.svg?branch=master)
+
 # Scooters
 
 This is a tool to help determine the required number of engineers to maintain a fleet of scooters.
