@@ -1,3 +1,7 @@
+require "simplecov"
+SimpleCov.minimum_coverage_by_file 80
+SimpleCov.start
+
 require "bundler/setup"
 require "scooters"
 
