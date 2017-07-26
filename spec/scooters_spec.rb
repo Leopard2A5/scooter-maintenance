@@ -19,6 +19,12 @@ RSpec.describe Scooters do
     expect(Scooters::VERSION).not_to be nil
   end
 
+  it "works doesn't fail with valid params" do
+    expect {
+      Scooters.min_required_engineers(DEFAULT)
+    }.not_to raise_exception
+  end
+
   it "requires all three parameters" do
     expect {
       Scooters.min_required_engineers(DEFAULT.except :cap_manager)
@@ -31,10 +37,6 @@ RSpec.describe Scooters do
     expect {
       Scooters.min_required_engineers(DEFAULT.except :scooters)
     }.to raise_exception(ArgumentError)
-
-    expect {
-      Scooters.min_required_engineers(DEFAULT)
-    }.not_to raise_exception
   end
 
   it "validates cap parameters" do
