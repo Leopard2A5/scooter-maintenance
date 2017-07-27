@@ -26,4 +26,18 @@ RSpec.describe Scooters do
     )).to eq(2)
   end
 
+  it 'returns the right result with several mixed regions' do
+    expect(Scooters.min_required_engineers(
+      cap_manager: 4,
+      cap_engineers: 5,
+      scooters: [1, 6, 3]
+    )).to eq(3)
+
+    expect(Scooters.min_required_engineers(
+      cap_manager: 5,
+      cap_engineers: 4,
+      scooters: [1, 5, 4]
+    )).to eq(2)
+  end
+
 end
