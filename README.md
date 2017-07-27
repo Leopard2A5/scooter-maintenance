@@ -24,6 +24,14 @@ Example:
 scooters --cap-manager 6 --cap-engineers 5 --scooters 4,5,3,8,5
 ```
 
+## Unit testing
+
+Running the unit tests is the default rake task. Run the unit tests like so:
+```bash
+rake
+```
+Find the code coverage report in `coverage/index.html`.
+
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
