@@ -1,57 +1,29 @@
-require "spec_helper"
+require 'spec_helper'
 
 RSpec.describe Scooters do
-  DEFAULT = {
-    cap_manager: 1,
-    cap_engineers: 1,
-    scooters: [1]
-  }
 
-  def DEFAULT.except(*exceptions)
-    clone.delete_if {|k, _| exceptions.include? k }
+  it 'returns the right result with a single small region' do
+    (0..4).each do |num_scooters|
+      expect(Scooters.min_required_engineers(
+        cap_manager: 4,
+        cap_engineers: 3,
+        scooters: [num_scooters]
+      )).to eq(0)
+    end
   end
 
-  def DEFAULT.with(hash)
-    clone.merge(hash)
+  it 'returns the right result with a single big region' do
+    expect(Scooters.min_required_engineers(
+      cap_manager: 5,
+      cap_engineers: 2,
+      scooters: [6]
+    )).to eq(1)
+
+    expect(Scooters.min_required_engineers(
+      cap_manager: 5,
+      cap_engineers: 2,
+      scooters: [9]
+    )).to eq(2)
   end
 
-  it "has a version number" do
-    expect(Scooters::VERSION).not_to be nil
-  end
-
-  it "works doesn't fail with valid params" do
-    expect {
-      Scooters.min_required_engineers(DEFAULT)
-    }.not_to raise_exception
-  end
-
-  it "requires all three parameters" do
-    expect {
-      Scooters.min_required_engineers(DEFAULT.except :cap_manager)
-    }.to raise_exception(ArgumentError)
-
-    expect {
-      Scooters.min_required_engineers(DEFAULT.except :cap_engineers)
-    }.to raise_exception(ArgumentError)
-
-    expect {
-      Scooters.min_required_engineers(DEFAULT.except :scooters)
-    }.to raise_exception(ArgumentError)
-  end
-
-  it "validates cap parameters" do
-    expect {
-      Scooters.min_required_engineers(DEFAULT.with cap_manager: -1)
-    }.to raise_exception(ArgumentError)
-
-    expect {
-      Scooters.min_required_engineers(DEFAULT.with cap_engineers: -1)
-    }.to raise_exception(ArgumentError)
-  end
-
-  it "validates scooters array" do
-    expect {
-      Scooters.min_required_engineers(DEFAULT.with scooters: [1, 2, -1])
-    }.to raise_exception(ArgumentError)
-  end
 end
