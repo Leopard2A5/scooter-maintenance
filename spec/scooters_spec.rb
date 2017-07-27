@@ -48,4 +48,10 @@ RSpec.describe Scooters do
       Scooters.min_required_engineers(DEFAULT.with cap_engineers: -1)
     }.to raise_exception(ArgumentError)
   end
+
+  it "validates scooters array" do
+    expect {
+      Scooters.min_required_engineers(DEFAULT.with scooters: [1, 2, -1])
+    }.to raise_exception(ArgumentError)
+  end
 end
