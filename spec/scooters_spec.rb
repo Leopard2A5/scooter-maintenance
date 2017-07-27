@@ -8,11 +8,11 @@ RSpec.describe Scooters do
   }
 
   def DEFAULT.except(*exceptions)
-    self.clone.delete_if {|k, _| exceptions.include? k }
+    clone.delete_if {|k, _| exceptions.include? k }
   end
 
   def DEFAULT.with(hash)
-    self.clone.merge(hash)
+    clone.merge(hash)
   end
 
   it "has a version number" do
