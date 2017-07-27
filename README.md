@@ -12,6 +12,8 @@ rake install
 ```
 The executable `scooters` should then be in your `PATH`.
 
+> Uninstall like so: `gem uninstall scooters`.
+
 ## Usage
 
 Print usage instructions with
