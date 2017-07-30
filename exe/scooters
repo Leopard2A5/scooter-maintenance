@@ -6,7 +6,7 @@ require "slop"
 opts = Slop.parse do |o|
   o.integer '-m', '--cap-manager', 'Capacity of the fleet manager'
   o.integer '-e', '--cap-engineers', 'Capacity of the engineers'
-  o.array '-s', '--scooters', 'Array of integers giving the number of scooters in each region.'
+  o.array '-s', '--scooters', 'Comma-separated array of integers giving the number of scooters in each region.'
   o.bool '-h', '--help', 'Print usage instructions.'
   o.on '-v', '--version', 'Prints the version' do
     puts Scooters::VERSION
