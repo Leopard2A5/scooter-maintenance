@@ -40,4 +40,12 @@ RSpec.describe Scooters do
     )).to eq(2)
   end
 
+  skip 'finds the optimal solution for this setup' do
+    expect(Scooters.min_required_engineers(
+      cap_manager: 3,
+      cap_engineers: 4,
+      scooters: [8, 2, 4]
+    )).to eq(3)
+  end
+
 end
