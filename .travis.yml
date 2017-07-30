@@ -5,3 +5,5 @@ rvm:
 before_install: gem install bundler -v 1.15.2
 script:
   - bundle exec rake spec
+  - rake install
+  - scooters -m 3 -e 3 -s 3,6,9
