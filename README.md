@@ -8,6 +8,7 @@ This is a tool to help determine the required number of engineers to maintain a 
 
 After checking out the repository, install the gem locally with
 ```bash
+bundle install
 rake install
 ```
 The executable `scooters` should then be in your `PATH`.
