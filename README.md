@@ -43,7 +43,7 @@ Find the code coverage report in `coverage/index.html`.
 
 ## Considerations
 
-This is a typical optimization problem. Depending on the importance of finding an optimal solution I'd consider using dynamic programming to solve the problem. Given a time window of 4h for the software, however, I'll settle for a suboptimal implementation.
+This is a typical optimization problem. Depending on the importance of finding an optimal solution I'd consider using dynamic programming to solve the problem. I'll settle for a **suboptimal** implementation due to *time constraints*.
 
 The implemented algorithm tries to find a perfect fit for the manager, or, if not possible, assign the manager to the biggest region. The program subsequently fills up the remaining regions with engineers. This, however, is not optimal in certain constellations.
 
